@@ -46,9 +46,15 @@ class Calculator {
       case "*":
         computation = prev * current;
         break;
-      case "÷":
-        computation = prev / current;
-        break;
+        case "÷":
+            if (current === 0) {
+              this.currentOutput = "I can't divide by zero 🤖!";
+              this.operation = undefined;
+              this.previousOutput = "";
+              return;
+            } else {
+              computation = prev / current;
+            }
         default:
             return
     }
@@ -100,7 +106,7 @@ equalsButton.addEventListener("click", (button) => {
 });
 
 allClearButton.addEventListener("click", (button) => {
-    calculator.clear();
+    calculator.allClear();
     calculator.updateDisplay();
   });
 
